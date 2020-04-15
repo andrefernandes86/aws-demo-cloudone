@@ -51,7 +51,7 @@ kops update cluster ${NAME} --yes
 # Suggestions:
 # * validate cluster: kops validate cluster
 # * list nodes: kubectl get nodes --show-labels
-# * ssh to the master: ssh -i ~/.ssh/id_rsa admin@api.k8s-gitlab.k8s.local
+# * ssh to the master: ssh -i ~/.ssh/id_rsa admin@api.af-cloudone-demo.k8s.local
 # * the admin user is specific to Debian. If not using Debian please use the appropriate user based on your OS.
 # kops validate cluster
 # kops delete cluster --name ${NAME} --yes
