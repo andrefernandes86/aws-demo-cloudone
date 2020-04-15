@@ -2,8 +2,8 @@
 # Requirements
 sudo su
 sudo apt-get update
-sudo apt-get curl -y
-sudo apt-get wget -y
+sudo apt-get install curl -y
+sudo apt-get install wget -y
 sleep 5
 
 # Installing Docker
