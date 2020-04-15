@@ -51,13 +51,10 @@ kops create secret --name ${NAME} sshpublickey admin -i ~/.ssh/id_rsa.pub
 # Apply KOPS Configuration and Deploy your Cluster
 kops update cluster ${NAME} --yes
 
-# Suggestions:
-# * validate cluster: kops validate cluster
-# * list nodes: kubectl get nodes --show-labels
-# * ssh to the master: ssh -i ~/.ssh/id_rsa admin@api.af-cloudone-demo.k8s.local
-# * the admin user is specific to Debian. If not using Debian please use the appropriate user based on your OS.
+# validate cluster: kops validate cluster
+# list nodes: kubectl get nodes --show-labels
+# ssh to the master: ssh -i ~/.ssh/id_rsa admin@api.af-cloudone-demo.k8s.local
 # kops validate cluster
-# kops delete cluster --name ${NAME} --yes
 
 sleep 5m
 
@@ -75,19 +72,27 @@ kubectl create clusterrolebinding tiller-cluster-role \
 helm init --service-account tiller
 
 helm install \
---set auth.masterPassword=TrendMicro123! \
+--set auth.masterPassword=TrendMicro123 \
 --set activationCode=AP-28AS-AT9GT-QHVJA-F4WUU-R59YG-7KWUC \
 --name deepsecurity-smartcheck \
 https://github.com/deep-security/smartcheck-helm/archive/master.tar.gz
 
+echo -----
+echo -----
+echo -----
+echo ----- This is the Smart Check URL -----
 export SERVICE_IP=$(kubectl get svc proxy -o jsonpath='{.status.loadBalancer.ingress[0].hostname}')
 echo https://$SERVICE_IP:443
-
 echo -----
+echo -----
+echo -----
+echo ----- This is default username -----
 echo Username: $(kubectl get secrets -o jsonpath='{ .data.userName }' deepsecurity-smartcheck-auth | base64 --decode)
-echo -----
+echo ----- This is default password -----
 echo Password: $(kubectl get secrets -o jsonpath='{ .data.password }' deepsecurity-smartcheck-auth | base64 --decode)
 echo -----
 
 # https://console.aws.amazon.com/ecr/repositories?region=us-east-1
 # AWS CLI 2 is required
+
+# kops delete cluster --name ${NAME} --yes
