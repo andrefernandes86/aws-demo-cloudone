@@ -69,14 +69,6 @@ kubectl create clusterrolebinding tiller-cluster-role \
 --serviceaccount=kube-system:tiller
 helm init --service-account tiller
 
-kubectl create serviceaccount \
---namespace kube-system \
-tiller
-kubectl create clusterrolebinding tiller-cluster-role \
---clusterrole=cluster-admin \
---serviceaccount=kube-system:tiller
-helm init --service-account tiller
-
 export SERVICE_IP=$(kubectl get svc proxy -o jsonpath='{.status.loadBalancer.ingress[0].hostname}')
 echo https://$SERVICE_IP:443
 
