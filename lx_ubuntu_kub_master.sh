@@ -55,3 +55,33 @@ kops update cluster ${NAME} --yes
 # * the admin user is specific to Debian. If not using Debian please use the appropriate user based on your OS.
 # kops validate cluster
 # kops delete cluster --name ${NAME} --yes
+
+# Installing Smart Check
+aws ecr create-repository --repository-name ecr-af-cloudone-demo
+curl https://raw.githubusercontent.com/kubernetes/helm/master/scripts/get | bash
+kubectl config current-context
+
+kubectl create serviceaccount \
+--namespace kube-system \
+tiller
+kubectl create clusterrolebinding tiller-cluster-role \
+--clusterrole=cluster-admin \
+--serviceaccount=kube-system:tiller
+helm init --service-account tiller
+
+kubectl create serviceaccount \
+--namespace kube-system \
+tiller
+kubectl create clusterrolebinding tiller-cluster-role \
+--clusterrole=cluster-admin \
+--serviceaccount=kube-system:tiller
+helm init --service-account tiller
+
+export SERVICE_IP=$(kubectl get svc proxy -o jsonpath='{.status.loadBalancer.ingress[0].hostname}')
+echo https://$SERVICE_IP:443
+
+echo Username: $(kubectl get secrets -o jsonpath='{ .data.userName }' deepsecurity-smartcheck-auth | base64 -
+-decode)
+echo Password: $(kubectl get secrets -o jsonpath='{ .data.password }' deepsecurity-smartcheck-auth | base64 --
+decode)
+
