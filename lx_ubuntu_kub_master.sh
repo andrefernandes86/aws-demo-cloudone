@@ -81,3 +81,6 @@ echo https://$SERVICE_IP:443
 echo Username: $(kubectl get secrets -o jsonpath='{ .data.userName }' deepsecurity-smartcheck-auth | base64 --decode)
 
 echo Password: $(kubectl get secrets -o jsonpath='{ .data.password }' deepsecurity-smartcheck-auth | base64 --decode)
+
+# https://console.aws.amazon.com/ecr/repositories?region=us-east-1
+# AWS CLI 2 is required
