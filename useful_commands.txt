@@ -24,5 +24,8 @@ echo -----
 https://console.aws.amazon.com/ecr/repositories?region=us-east-1
 
 # how to delete the kubernetes cluster:
+export NAME=af-cloudone-demo.k8s.local
+export KOPS_STATE_STORE=s3://af-cloudone-demo
 kops delete cluster --name ${NAME} --yes
 
+.
