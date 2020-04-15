@@ -51,11 +51,6 @@ kops create secret --name ${NAME} sshpublickey admin -i ~/.ssh/id_rsa.pub
 # Apply KOPS Configuration and Deploy your Cluster
 kops update cluster ${NAME} --yes
 
-# validate cluster: kops validate cluster
-# list nodes: kubectl get nodes --show-labels
-# ssh to the master: ssh -i ~/.ssh/id_rsa admin@api.af-cloudone-demo.k8s.local
-# kops validate cluster
-
 sleep 5m
 
 # Installing Smart Check
@@ -91,8 +86,5 @@ echo Username: $(kubectl get secrets -o jsonpath='{ .data.userName }' deepsecuri
 echo ----- This is default password -----
 echo Password: $(kubectl get secrets -o jsonpath='{ .data.password }' deepsecurity-smartcheck-auth | base64 --decode)
 echo -----
-
-# https://console.aws.amazon.com/ecr/repositories?region=us-east-1
-# AWS CLI 2 is required
-
-# kops delete cluster --name ${NAME} --yes
+echo -----
+echo -----
