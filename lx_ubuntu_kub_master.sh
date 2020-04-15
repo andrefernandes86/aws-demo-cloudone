@@ -4,6 +4,8 @@ sudo su
 sudo apt-get update
 sudo apt-get install curl -y
 sudo apt-get install wget -y
+sudo apt-get install awscli -y
+
 sleep 5
 
 # Installing Docker
