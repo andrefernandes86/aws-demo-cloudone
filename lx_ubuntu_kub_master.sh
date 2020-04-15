@@ -69,6 +69,12 @@ kubectl create clusterrolebinding tiller-cluster-role \
 --serviceaccount=kube-system:tiller
 helm init --service-account tiller
 
+helm install \
+--set auth.masterPassword=TrendMicro123! \
+--set activationCode=AP-28AS-AT9GT-QHVJA-F4WUU-R59YG-7KWUC \
+--name deepsecurity-smartcheck \
+https://github.com/deep-security/smartcheck-helm/archive/master.tar.gz
+
 export SERVICE_IP=$(kubectl get svc proxy -o jsonpath='{.status.loadBalancer.ingress[0].hostname}')
 echo https://$SERVICE_IP:443
 
