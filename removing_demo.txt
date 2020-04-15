@@ -1,0 +1,28 @@
+# From the Linux Instance
+
+- how to validate cluster state: 
+kops validate cluster
+
+- how to list nodes: 
+kubectl get nodes --show-labels
+
+- how to ssh to the master: 
+ssh -i ~/.ssh/id_rsa admin@api.af-cloudone-demo.k8s.local
+
+- how to check the Smart Check URL:
+export SERVICE_IP=$(kubectl get svc proxy -o jsonpath='{.status.loadBalancer.ingress[0].hostname}')
+echo https://$SERVICE_IP:443
+
+- how to get Smart Check username:
+echo Username: $(kubectl get secrets -o jsonpath='{ .data.userName }' deepsecurity-smartcheck-auth | base64 --decode)
+
+- how to get Smart Check password:
+echo Password: $(kubectl get secrets -o jsonpath='{ .data.password }' deepsecurity-smartcheck-auth | base64 --decode)
+echo -----
+
+# Where to get the ECR information to register in Smart Check:
+https://console.aws.amazon.com/ecr/repositories?region=us-east-1
+
+# how to delete the kubernetes cluster:
+kops delete cluster --name ${NAME} --yes
+
