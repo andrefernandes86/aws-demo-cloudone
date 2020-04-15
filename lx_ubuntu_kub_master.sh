@@ -32,7 +32,7 @@ aws s3api create-bucket --bucket af-cloudone-demo --region us-east-1
 # Enable Versioning
 aws s3api put-bucket-versioning --bucket af-cloudone-demo --versioning-configuration Status=Enabled
 # Enable Bucket Encryption
-aws s3api put-bucket-encryption --bucket bucket af-cloudone-demo --server-side-encryption-configuration '{"Rules":[{"ApplyServerSideEncryptionByDefault":{"SSEAlgorithm":"AES256"}}]}'
+aws s3api put-bucket-encryption --bucket af-cloudone-demo --server-side-encryption-configuration '{"Rules":[{"ApplyServerSideEncryptionByDefault":{"SSEAlgorithm":"AES256"}}]}'
 
 # Set Environment Variables for KOPS
 export NAME=af-cloudone-demo.k8s.local
