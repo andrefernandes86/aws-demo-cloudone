@@ -4,9 +4,12 @@ sudo su
 sudo apt-get update
 sudo apt-get install curl -y
 sudo apt-get install wget -y
-sudo apt-get install awscli -y
 
 sleep 5
+
+curl "https://awscli.amazonaws.com/awscli-exe-linux-x86_64.zip" -o "awscliv2.zip"
+unzip awscliv2.zip
+sudo ./aws/install
 
 # Installing Docker
 sudo apt-get install python -y
@@ -56,6 +59,8 @@ kops update cluster ${NAME} --yes
 # kops validate cluster
 # kops delete cluster --name ${NAME} --yes
 
+sleep 5m
+
 # Installing Smart Check
 aws ecr create-repository --repository-name ecr-af-cloudone-demo
 curl https://raw.githubusercontent.com/kubernetes/helm/master/scripts/get | bash
@@ -78,9 +83,11 @@ https://github.com/deep-security/smartcheck-helm/archive/master.tar.gz
 export SERVICE_IP=$(kubectl get svc proxy -o jsonpath='{.status.loadBalancer.ingress[0].hostname}')
 echo https://$SERVICE_IP:443
 
+echo -----
 echo Username: $(kubectl get secrets -o jsonpath='{ .data.userName }' deepsecurity-smartcheck-auth | base64 --decode)
-
+echo -----
 echo Password: $(kubectl get secrets -o jsonpath='{ .data.password }' deepsecurity-smartcheck-auth | base64 --decode)
+echo -----
 
 # https://console.aws.amazon.com/ecr/repositories?region=us-east-1
 # AWS CLI 2 is required
