@@ -8,10 +8,8 @@ AWS - Cloud One Demo (Including Deep Security, TippingPoint, Smart Check and App
 
 ## How to demo
 ### Phase1 - Demo Preparation
-While creating the Linux Instance in EC2, copy/paste the content of the file Instructions on the Advanced option;
-Instructions.txt - https://raw.githubusercontent.com/andrefernandes86/aws-demo-cloudone/master/instructions.txt
-
-* Make sure you have access to the SSH port on the Linux Instance
+Create one Linux Instance in EC2;
+Follow the instructions described in this file: https://raw.githubusercontent.com/andrefernandes86/aws-demo-cloudone/master/instructions.txt
 
 ### Phase2 - Additional Configurations
 
