@@ -1,5 +1,4 @@
-# aws-demo-cloudone
-AWS - Cloud One Demo (Including Deep Security, TippingPoint, Smart Check and App Protect)
+# AWS - Cloud One - Container Protection Demo
 
 ## Requirements
 - AWS Account
