@@ -56,6 +56,14 @@ kops update cluster ${NAME} --yes
 
 sleep 5m
 
+# how to validate cluster state: 
+kops validate cluster
+
+# how to list nodes: 
+kubectl get nodes --show-labels
+
+sleep 5m
+
 # Installing Smart Check
 aws ecr create-repository --repository-name ecr-af-cloudone-demo
 curl https://raw.githubusercontent.com/kubernetes/helm/master/scripts/get | bash
