@@ -8,7 +8,7 @@
 ## How to demo
 ### Phase1 - Demo Preparation
 - Create one Linux Instance in EC2;
-- Follow the instructions described in this file: https://raw.githubusercontent.com/andrefernandes86/aws-demo-cloudone/master/instructions.txt
+- Follow the instructions described in this file instructions.txt
 
 ### Phase2 - Additional Configurations
 - After you get the username, password and Smart Check URL, access the URL and change the password;
